@@ -9,6 +9,7 @@ import requests
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import datetime
 
 st.title('Weather App')
 
@@ -61,13 +62,14 @@ def get_weather(location):
     df = pd.DataFrame({"date": dates, "temperature": temperatures})
     
     # Convert "date" column to datetime object.
-    df["date"] = pd.to_datetime(df["date"])
-    df["date"] = df["date"].dt.strftime("%a %d, %b")
+    #df["date"] = pd.to_datetime(df["date"])
+    #df["date"] = df["date"].dt.strftime("%a %d, %b")
+    df['datetime'] = df['date'].apply(datetime.fromtimestamp)
 
     # Create a figure object
     fig = plt.figure()
 
-    plt.plot(df["date"], df["temperature"])
+    plt.plot(df["datetime"], df["temperature"])
     plt.xlabel("Date")
     plt.ylabel("Temperature (F)")
 
