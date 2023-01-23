@@ -7,6 +7,7 @@ Created on Thu Jan 19 07:13:37 2023
 
 import requests
 import streamlit as st
+import pandas as pd
 
 st.title('Weather App')
 
@@ -46,7 +47,20 @@ def get_weather(location):
     weather_url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={long}&exclude={part}&appid="
     final_url = weather_url + API_Key
     weather_data = requests.get(final_url).json()
-    return st.caption(weather_data)
+    
+    # Create empty lists to store the data
+    dates = []
+    temperatures = []
+
+    # Iterate through the list of forecasts and print the temperature for each day
+    for forecast in weather_data["daily"]:
+        dates.append(forecast["dt"])
+        temperatures.append(forecast["temp"]["day"])
+        
+    df = pd.DataFrame({"date": dates, "temperature": temperatures})
+    
+    #return st.caption(weather_data)
+    return st.dataframe(df)
 
 #print(weather_data)
 
