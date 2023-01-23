@@ -6,10 +6,23 @@ Created on Thu Jan 19 07:13:37 2023
 """
 
 import requests
+import streamlit as st
+
+st.title('Weather App')
+
+st.markdown("""
+This app retrieves the weather from any city in the worls the user choses!
+* **Python libraries:** requests, streamlit
+* **Data source:** OpenWeather API.
+""")
+
+city = st.text_input('Input a City', 'Park City')
+st.write('Your current selected city is', city)
 
 API_Key = "3014d47cf62ff4109d203a2ec132799a"
 
-location = input("Enter Your Desired Location: ")
+#location = input("Enter Your Desired Location: ")
+location = city
 
 geo_url = f"http://api.openweathermap.org/geo/1.0/direct?q={location}&appid="
 final_geo_url = geo_url + API_Key
@@ -31,4 +44,7 @@ weather_url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={l
 final_url = weather_url + API_Key
 weather_data = requests.get(final_url).json()
 
-print(weather_data)
+#print(weather_data)
+
+st.subheader('The weather in ', city, ' is:')
+st.write(weather_data)
