@@ -72,6 +72,9 @@ def get_weather(location):
     plt.plot(df["datetime"], df["temperature"])
     plt.xlabel("Date")
     plt.ylabel("Temperature (F)")
+    
+    # Rotate x-axis marker labels
+    plt.xticks(rotation=45)
 
     #return st.caption(weather_data)
     #return st.dataframe(df)
