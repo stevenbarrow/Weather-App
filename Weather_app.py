@@ -60,6 +60,9 @@ def get_weather(location):
         
     df = pd.DataFrame({"date": dates, "temperature": temperatures})
     
+    # Convert "date" column to datetime object
+    df["date"] = pd.to_datetime(df["date"])
+
     # Create a figure object
     fig = plt.figure()
 
@@ -80,4 +83,3 @@ if st.button('Show me the weather!'):
     get_weather(city)
 else:
     st.write('Click the button to display the weather in your city of choice')
-
