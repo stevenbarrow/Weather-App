@@ -60,8 +60,9 @@ def get_weather(location):
         
     df = pd.DataFrame({"date": dates, "temperature": temperatures})
     
-    # Convert "date" column to datetime object
+    # Convert "date" column to datetime object.
     df["date"] = pd.to_datetime(df["date"])
+    df["date"] = df["date"].dt.strftime("%a %d, %b")
 
     # Create a figure object
     fig = plt.figure()
