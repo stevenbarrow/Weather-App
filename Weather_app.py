@@ -40,8 +40,8 @@ def get_weather(location):
     long = geo_dict['lon']
 
 #print(lat,long)
-
-    part = 'minutely'
+    
+    part = 'current, minutely, hourly, alerts'
 
     weather_url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={long}&exclude={part}&appid="
     final_url = weather_url + API_Key
