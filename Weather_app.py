@@ -51,7 +51,9 @@ def get_weather(location):
 #print(weather_data)
 
 if st.button('Show me the weather!'):
-    st.subheader('The weather in ', city, ' is:')
+    st.subheader('The weather in ')
+    st.usbheader(city)
+    st.subheader(' is:')
     get_weather(city)
 else:
     st.write('Click the button to display the weather in your city of choice')
