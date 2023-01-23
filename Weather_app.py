@@ -44,7 +44,7 @@ def get_weather(location):
     
     part = 'current, minutely, hourly, alerts'
 
-    weather_url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={long}&exclude={part}&appid="
+    weather_url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={long}&exclude={part}&units=imperial&appid="
     final_url = weather_url + API_Key
     weather_data = requests.get(final_url).json()
     
@@ -71,3 +71,4 @@ if st.button('Show me the weather!'):
     get_weather(city)
 else:
     st.write('Click the button to display the weather in your city of choice')
+
