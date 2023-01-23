@@ -60,13 +60,16 @@ def get_weather(location):
         
     df = pd.DataFrame({"date": dates, "temperature": temperatures})
     
+    # Create a figure object
+    fig = plt.figure()
+
     plt.plot(df["date"], df["temperature"])
     plt.xlabel("Date")
     plt.ylabel("Temperature (F)")
 
     #return st.caption(weather_data)
     #return st.dataframe(df)
-    return st.pyplot()
+    return st.pyplot(fig)
 
 #print(weather_data)
 
@@ -77,3 +80,4 @@ if st.button('Show me the weather!'):
     get_weather(city)
 else:
     st.write('Click the button to display the weather in your city of choice')
+
