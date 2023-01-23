@@ -8,12 +8,13 @@ Created on Thu Jan 19 07:13:37 2023
 import requests
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
 st.title('Weather App')
 
 st.markdown("""
 This app retrieves the weather from any city in the worls the user choses!
-* **Python libraries:** requests, streamlit
+* **Python libraries:** requests, streamlit, pandas, pyplot
 * **Data source:** OpenWeather API.
 """)
 
@@ -59,8 +60,13 @@ def get_weather(location):
         
     df = pd.DataFrame({"date": dates, "temperature": temperatures})
     
+    plt.plot(df["date"], df["temperature"])
+    plt.xlabel("Date")
+    plt.ylabel("Temperature (F)")
+
     #return st.caption(weather_data)
-    return st.dataframe(df)
+    #return st.dataframe(df)
+    return st.pyplot()
 
 #print(weather_data)
 
@@ -71,4 +77,3 @@ if st.button('Show me the weather!'):
     get_weather(city)
 else:
     st.write('Click the button to display the weather in your city of choice')
-
