@@ -52,7 +52,7 @@ def get_weather(location):
 
 if st.button('Show me the weather!'):
     st.subheader('The weather in ')
-    st.usbheader(city)
+    st.subheader(city)
     st.subheader(' is:')
     get_weather(city)
 else:
