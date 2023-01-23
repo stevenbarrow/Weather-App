@@ -46,7 +46,7 @@ def get_weather(location):
     weather_url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={long}&exclude={part}&appid="
     final_url = weather_url + API_Key
     weather_data = requests.get(final_url).json()
-    return weather_data
+    return st.caption(weather_data)
 
 #print(weather_data)
 
