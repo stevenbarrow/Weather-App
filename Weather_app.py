@@ -14,7 +14,7 @@ from datetime import datetime
 st.title('Weather App')
 
 st.markdown("""
-This app retrieves the weather from any city in the worls the user choses!
+This app retrieves the weather from any city in the world the user choses!
 * **Python libraries:** requests, streamlit, pandas, pyplot
 * **Data source:** OpenWeather API.
 """)
